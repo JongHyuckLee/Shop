@@ -1,29 +1,43 @@
 package com.dev.shop.controller;
 
 import com.dev.shop.mongo.Products;
-import com.dev.shop.mongo.Users;
 import com.dev.shop.repository.ProductRepository;
-import com.dev.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * IndexController Class
+ * author by jonghyuck lee
+ * date : 2018.09.02
+ * method index
+ *  index : 초기 진입 화면, 로그인 화면
+ */
 @Controller
 @RequestMapping("/")
 public class IndexController {
 
+    /**
+     * repository 상품 몽고 db repository
+     */
     @Autowired
     private ProductRepository repository;
 
+    /**
+     *
+     * @param model    view data
+     * @param session  session data
+     * @param response response object
+     * description : 초기 진입 화면, 로그인 화면, 초기 데이터 없을 시 초기 데이터 삽입
+     * @return String index
+     */
     @RequestMapping(method = RequestMethod.GET)
     public String index(Model model, HttpSession session, HttpServletResponse response) {
         if (session.getAttribute("user_session") != null) {
@@ -44,8 +58,12 @@ public class IndexController {
         }
 
         return "index";
-    }
+    }//end index()
 
+    /**
+     * description : 초기 카카오 프렌즈 상품 데이터
+     * @return ArrayList 초기 상품 데이터
+     */
     private ArrayList<Products> getData() {
         ArrayList<Products> products = new ArrayList<>();
         products.add(
@@ -119,5 +137,5 @@ public class IndexController {
                 )
         );
         return products;
-    }
-}
+    }//end getData()
+}//end class

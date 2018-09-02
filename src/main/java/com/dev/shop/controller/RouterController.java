@@ -15,20 +15,39 @@ import javax.servlet.http.HttpSession;
 import java.net.URLEncoder;
 import java.util.*;
 
-
+/**
+ * RouterController Class : api data return method class
+ * author by jonghyuck lee
+ * date : 2018.09.02
+ * method purchase, login, signup
+ * purchase : 상품 구입 처리
+ * login : 로그인 처리
+ * signup : 회원 가입 처리
+ */
 @RestController
 @RequestMapping("/router")
 @ResponseBody
 public class RouterController {
 
+    /**
+     * productRepository 상품 몽고 db repository
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * userRepository 유저 몽고 db repository
+     */
     @Autowired
     private ProductRepository productRepository;
 
     private String token = "EqdmPh53c9x33EygXpTpcoJvc4VXLK";
 
+    /**
+     * @param session  session data
+     * description : 상품 구매 처리
+     * @return HashMap 구매 확인 메시지와 결과
+     */
     @RequestMapping(value = "/purchase", method = RequestMethod.POST)
     public HashMap<String, String> purchase(@RequestBody Map<String, Object> params, HttpSession session) {
 
@@ -68,8 +87,13 @@ public class RouterController {
         }
 
         return result;
-    }
+    }//end purchase()
 
+    /**
+     * @param session  session data
+     * description : login 로그인 처리
+     * @return HashMap 로그인 확인 메시지와 결과
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public HashMap<String, String> login(@RequestBody Map<String, Object> params, HttpSession session) {
         String user_id = params.get("user_id").toString().trim();
@@ -98,8 +122,12 @@ public class RouterController {
         session.setAttribute("user_session", user_session);
 
         return result;
-    }
+    }//end login()
 
+    /**
+     * description : signup 회원 가입 처리
+     * @return HashMap 회원가입 확인 메시지와 결과
+     */
     @RequestMapping(value = "/signup", method = RequestMethod.POST, produces = "application/json")
     public HashMap<String, String> signup(@RequestBody Map<String, Object> params) throws EmptyValueExceptions {
         String user_id = params.get("user_id").toString().trim();
@@ -157,5 +185,5 @@ public class RouterController {
         result.put("result", "success");
         result.put("message", "회원가입이 완료되었습니다.");
         return result;
-    }
-}
+    }//end signup()
+}//end class

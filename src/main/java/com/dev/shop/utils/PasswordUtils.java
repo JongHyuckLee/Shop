@@ -9,6 +9,11 @@ import java.util.Random;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/**
+ * PasswordUtils
+ * description : 회원 패스워드 생성, 비교 메서드 클래스
+ * open source : http://www.appsdeveloperblog.com/encrypt-user-password-example-java/
+ */
 public class PasswordUtils {
 
     private static final Random RANDOM = new SecureRandom();
@@ -57,4 +62,4 @@ public class PasswordUtils {
 
         return returnValue;
     }
-}
+}//end class

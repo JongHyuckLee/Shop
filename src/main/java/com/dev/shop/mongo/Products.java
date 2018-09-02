@@ -2,6 +2,10 @@ package com.dev.shop.mongo;
 
 import org.springframework.data.annotation.Id;
 
+/**
+ * Products data class
+ * description : 상품 데이터
+ */
 public class Products {
 
     @Id
@@ -35,6 +39,6 @@ public class Products {
         this.productPrice = product_price;
         this.productImage = product_image;
     }
-}
+}//end class
 
 

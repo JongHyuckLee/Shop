@@ -1,15 +1,12 @@
 package com.dev.shop.mongo;
 
-import com.dev.shop.repository.UserRepository;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.format.annotation.DateTimeFormat;
-import sun.usagetracker.UsageTrackerClient;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
+/**
+ * Users data class
+ * description : 유저 데이터
+ */
 public class Users {
 
     @Id
@@ -67,4 +64,4 @@ public class Users {
         this.userName = user_name;
         this.userPurchase = new ArrayList<String>();
     }
-}
+}//end class
