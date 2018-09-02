@@ -1,0 +1,19 @@
+form fieldset div {
+    margin-top : 15px;
+}
+form fieldset div label {
+    text-align:left;
+}
+form fieldset div .input {
+    width:100%;
+}
+
+form fieldset div button {
+    margin-top : 15px;
+    width:100%;
+}
+
+.sign_up {
+    color:#4374D9;
+    cursor:pointer;
+}
